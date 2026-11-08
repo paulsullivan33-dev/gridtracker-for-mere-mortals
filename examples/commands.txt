@@ -1,0 +1,26 @@
+GridTracker for Mere Mortals - distilled commands from the lab
+
+Install (on a real machine; the lab unpacked instead, see lab-notes.txt):
+  sudo apt install ./GridTracker2-2.261019.5-amd64.deb
+
+Prove the package before installing:
+  dpkg-deb -f GridTracker2-2.261019.5-amd64.deb
+  sha256sum GridTracker2-2.261019.5-amd64.deb
+  # lab copy: 4b192de09ed78eb78a2191a5e300e24268fe364a4c5f2684f157078c8587a3d7
+
+Is the listener up?
+  ss -lunp | grep 2237
+
+Read the program's own log:
+  less ~/.config/GridTracker2/logs/main.log
+
+Find the settings file:
+  ls ~/.config/GridTracker2/Ginternal/app-settings.json
+
+Send the lab's fictional WSJT-X probe (needs the app running, on a
+machine where loopback UDP is allowed - the lab's sandbox blocked it):
+  python3 gridtracker-lab/send_wsjtx.py
+
+Look inside the package without installing:
+  dpkg-deb -x GridTracker2-2.261019.5-amd64.deb unpacked/
+  ls unpacked/opt/GridTracker2/

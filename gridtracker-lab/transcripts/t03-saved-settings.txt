@@ -1,0 +1,38 @@
+Clean exit writes the real settings file - run 3, 2026-11-07
+
+Second launch (fresh redirected HOME), left running, then stopped with
+SIGTERM. On exit the app wrote Ginternal/app-settings.json (25,366 bytes).
+
+--- Ginternal/ after exit
+ 
+25366 app-settings.json
+1350359 canada-callsigns.txt
+528727 dxcc-info.json
+2784792 eqsl-callsigns.json
+3506950 lotw-ts-callsigns.json
+12 spots.json
+12034232 uls-fz-callsigns.txt
+
+--- settings structure (python3 json summary)
+top-level sections: 36
+['ByBandMode', 'HRDLogbookLog', 'N1MM', 'acLog', 'adifLog', 'app', 'appLogs', 'audio', 'audioAlerts', 'awardTracker', 'bandActivity', 'bandColors', 'callsignLookups', 'currentVersion', 'customAlerts', 'defaultsApplied', 'dxkLog', 'feedAudioAlerts', 'feedRoster', 'ignoredCQ', 'ignoredCQz', 'ignoredCalls', 'ignoredDxcc', 'ignoredGrid', 'ignoredITUz', 'ignoredSpotters', 'legendColors', 'log4OM', 'map', 'mapMemory', 'msg', 'pstrotator', 'reception', 'roster', 'startupLogs', 'trustedQsl']
+app.myCall = NOCALL
+app.myGrid = 
+app.wsjtUdpPort = 2237
+app.wsjtForwardUdpPort = 2238
+app.adifBroadcastPort = 2333
+app.lookupService = CALLOOK
+app.distanceUnit = MI
+app.loadAdifAtStartup = False
+app.multicast = False
+app.spottingEnable = True
+app.dxFeeds = False
+map.offlineMode = False
+map.mapIndex = Street by Esri (English)
+currentVersion = 22610195
+
+--- spots.json (verbatim)
+{"spots":{}}
+Note: the four callsign databases in Ginternal (dxcc-info.json, lotw-ts-callsigns.json,
+eqsl-callsigns.json, canada-callsigns.txt, uls-fz-callsigns.txt) were downloaded by the
+app itself during this run - 20 MB of other people's data, fetched on first run.

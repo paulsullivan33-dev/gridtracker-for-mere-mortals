@@ -1,0 +1,24 @@
+The WSJT-X probe that could not be sent - 2026-11-07
+
+Plan: gridtracker-lab/send_wsjtx.py builds WSJT-X Network Message datagrams
+(format read from the app's own parser, wsjtxUdp.js) - wrong-magic control,
+Heartbeat, Status, two Decodes, one QSO Logged - all for fictional stations
+N0TST (FN42) and N0CLL (FN31) - and sends them to 127.0.0.1:2237 while the
+app is running and bound to that port.
+
+Result: every send failed in this sandbox before leaving the process:
+
+  PermissionError: [Errno 1] Operation not permitted
+  (socket.sendto to ('127.0.0.1', 2237))
+
+Control test, same machine, same minute: a Python UDP listener bound to
+127.0.0.1:18099 and a Python sender on the same host - the send failed with
+the same Errno 1 and the listener received nothing. The sandbox blocks
+outbound UDP outright, loopback included; only proxied TCP leaves.
+
+So: the listener side is verified (the app binds 2237 and stays up), the
+parser is verified by reading the app's own code, and the reaction of the
+map and roster to a received datagram is NOT verified in this lab. The
+sender script is kept in the lab for a machine where loopback UDP is
+allowed; there, one Status datagram should change the window's header
+from 'waiting for message' and show the fictional station's band.

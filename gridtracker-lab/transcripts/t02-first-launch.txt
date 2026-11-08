@@ -1,0 +1,73 @@
+First launch under Xvfb - run 1, 2026-11-07
+
+Setup: Xvfb :99 (1600x1000x24), HOME redirected to the lab scratch home,
+the unpacked opt/GridTracker2/gridtracker2 run in place, polled every 5 s
+for 120 s, then stopped. Extracts:
+
+--- process and UDP socket polls (from run1/pids.txt)
+app pid 195359
+t+5s alive; udp:
+t+10s alive; udp:
+UNCONN 0      0              0.0.0.0:2237       0.0.0.0:*    users:(("gridtracker2.bi",pid=195563,fd=70))
+t+15s alive; udp:
+UNCONN 0      0              0.0.0.0:2237       0.0.0.0:*    users:(("gridtracker2.bi",pid=195563,fd=70))
+t+20s alive; udp:
+UNCONN 0      0              0.0.0.0:2237       0.0.0.0:*    users:(("gridtracker2.bi",pid=195563,fd=70))
+...
+23
+of the 24 polls from t+10s on showed UDP 2237 bound by gridtracker2.bin; the t+5s poll showed none yet
+
+--- app stdout/stderr, first lines (run1/app-stdout.log)
+Checking for beta autoupdate feature for deb/rpm distributions
+Found package-type: deb
+GridTracker2 starting up!
+
+[195366:1107/222555.456983:ERROR:bus.cc(408)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+
+22:25:56.377 › Could not load: /home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Ginternal/app-settings.json
+22:25:56.392 › Defaults will be applied
+22:25:58.853 › Error: ENOENT: no such file or directory, scandir '/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.local/share'
+Error: ENOENT: no such file or directory, scandir '/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.local/share'
+
+Checking for update
+22:26:11.522 › Error: Error: net::ERR_CERT_AUTHORITY_INVALID
+
+--- state created in the redirected HOME
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/.updaterId
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Backup Logs
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Cache
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Call Roster Scripts
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Code Cache
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Cookies
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Cookies-journal
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Crashpad
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/DIPS
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/DIPS-shm
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/DIPS-wal
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/DawnGraphiteCache
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/DawnWebGPUCache
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Dictionaries
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Extra Media
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/GPUCache
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Ginternal
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Local Storage
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Network Persistent State
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Preferences
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Screenshots
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Session Storage
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Shared Dictionary
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/SharedStorage
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/SharedStorage-wal
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/SingletonCookie
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/SingletonLock
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/SingletonSocket
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Trust Tokens
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/Trust Tokens-journal
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/blob_storage
+/home/hatch/workspace/.batch-351-363/scratch-gridtracker/home/.config/GridTracker2/logs
+
+--- screenshot: gridtracker-lab/first-run-window.png (taken at t+60s)
+Shows the first-run window: world map, 'waiting for message', '...no data yet...',
+Rx Calls 0 / QSO 0 / Rx DXCC 0 / QSL 0, Map View Filters, and the app's own
+version line 'GridTracker2 v2.261019.5'.

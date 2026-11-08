@@ -1,0 +1,78 @@
+Download and package record - GridTracker2 lab, 2026-11-07
+
+Route: official download server named by the project's own updater config
+(resources/app-update.yml inside the package: provider generic, url https://download2.gridtracker.org)
+
+$ curl -sI https://download2.gridtracker.org/GridTracker2-2.261019.5-amd64.deb
+HTTP/1.1 200 Connection Established
+HTTP/1.1 200 OK
+Content-Type: application/vnd.debian.binary-package
+Last-Modified: Tue, 20 Oct 2026 18:44:56 GMT
+Content-Length: 112973364
+
+$ ls -l and sha256sum of the downloaded file
+-rw-rw---- 1 root root 112973364 Nov  7 22:24 /home/hatch/workspace/.batch-351-363/scratch-gridtracker/GridTracker2-2.261019.5-amd64.deb
+4b192de09ed78eb78a2191a5e300e24268fe364a4c5f2684f157078c8587a3d7  /home/hatch/workspace/.batch-351-363/scratch-gridtracker/GridTracker2-2.261019.5-amd64.deb
+
+$ dpkg-deb -f (control fields)
+Package: gridtracker2
+Version: 2.261019.5-991
+License: unknown
+Vendor: gridtracker.org
+Architecture: amd64
+Maintainer: gridtracker.org
+Installed-Size: 326695
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Section: default
+Priority: optional
+Homepage: https://gridtracker.org/
+Description: 
+  GridTracker2
+
+$ cat usr/share/doc/gridtracker2/changelog.gz (unpacked)
+gridtracker2 (2.261019.5-991) ; urgency=medium
+
+  * Package created with FPM.
+
+ -- gridtracker.org  Tue, 20 Oct 2026 18:29:55 +0000
+
+Desktop entry (usr/share/applications/gridtracker2.desktop):
+[Desktop Entry]
+Name=GridTracker2
+Exec=/opt/GridTracker2/gridtracker2 %U
+Terminal=false
+Type=Application
+Icon=gridtracker2
+StartupWMClass=GridTracker2
+Comment=GridTracker2
+Categories=Utility;HamRadio;
+
+Launcher script (opt/GridTracker2/gridtracker2, verbatim):
+#!/bin/bash
+SOURCE_DIR=`realpath $0`
+SOURCE_DIR=`dirname ${SOURCE_DIR}`
+${SOURCE_DIR}/gridtracker2.bin "$@" --no-sandbox --enable-speech-dispatcher
+
+Top level of opt/GridTracker2 (sizes in bytes):
+ 
+1096 LICENSE.electron.txt
+12278238 LICENSES.chromium.html
+38224 chrome-sandbox
+148138 chrome_100_percent.pak
+222159 chrome_200_percent.pak
+1353040 chrome_crashpad_handler
+148 gridtracker2
+196249160 gridtracker2.bin
+10466624 icudtl.dat
+259520 libEGL.so
+6533400 libGLESv2.so
+2774024 libffmpeg.so
+4798896 libvk_swiftshader.so
+2304736 libvulkan.so.1
+706 locales
+100 resources
+6124975 resources.pak
+331874 snapshot_blob.bin
+702157 v8_context_snapshot.bin
+107 vk_swiftshader_icd.json

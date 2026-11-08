@@ -1,0 +1,40 @@
+GridTracker for Mere Mortals - lab notes
+
+Machine: Ubuntu sandbox, x86-64, Xvfb available (Xvfb, xvfb-run,
+scrot, import all present). The app is an Electron GUI, so the lab
+ran it under a virtual X server with HOME redirected into the lab
+scratch folder; every file it wrote landed where it could be read.
+
+What ran:
+- Downloaded GridTracker2-2.261019.5-amd64.deb (113 MB) from the
+  project's own download server, the one its updater config names.
+  Only the current version and one back answer on that server.
+- Unpacked with dpkg-deb (-e and -x), NOT installed system-wide.
+  Read the control file, maintainer scripts, desktop entry, the
+  launcher script, and the changelog.
+- Read the app out of resources/app.asar with a small Python asar
+  reader: package.json, build.env, CHANGELOG.md, and the source
+  tree. The WSJT-X parser (src/renderer/lib/wsjtxUdp.js) and the
+  settings defaults (src/renderer/lib/settings/defaults.js) are
+  the chapters' primary sources.
+- Launched the real binary three times under Xvfb. Run 1: stayed
+  alive 120 s, bound UDP 2237 from about t+10 s, created its state
+  tree, logged a failed version check (sandbox TLS), screenshot
+  at 60 s kept as first-run-window.png. Run 3: clean SIGTERM exit
+  wrote the full app-settings.json; its Ginternal held five
+  callsign database files the app had downloaded itself.
+- Wrote send_wsjtx.py implementing the Network Message format
+  from the app's own parser (wrong-magic control, Heartbeat,
+  Status, two Decodes, QSO Logged; stations N0TST/FN42 and
+  N0CLL/FN31, both invented). Could NOT deliver it: the sandbox
+  returns EPERM on every outbound UDP send, loopback included,
+  proven against a Python listener on 127.0.0.1:18099 that
+  received nothing. Recorded in transcript t04.
+
+Ports: the app's own UDP 2237 (receive) is the protocol's port,
+used on loopback; 2238 (forward) and 2333 (ADIF broadcast) are
+read from its defaults, never bound by the lab.
+
+Fixtures: fixtures/example-log.adi - four invented contacts for
+the invented N0TST. No real callsign, grid of residence, or log
+of any real person appears anywhere in this guide.

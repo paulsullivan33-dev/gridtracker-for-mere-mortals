@@ -1,0 +1,62 @@
+Inside the package - app.asar inventory, 2026-11-07
+
+resources/ in the unpacked .deb:
+ 
+99 app-update.yml
+46823638 app.asar
+245 apparmor-profile
+3 package-type
+
+resources/app-update.yml (verbatim):
+provider: generic
+url: https://download2.gridtracker.org
+updaterCacheDirName: gridtracker2-updater
+
+app.asar -> package.json (the app's own version record, verbatim):
+
+{
+  "name": "GridTracker2",
+  "version": "2.261019.5",
+  "description": "GridTracker2",
+  "main": "./src/main/index.js",
+  "author": "The GridTracker Team",
+  "homepage": "https://gridtracker.org/",
+  "dependencies": {
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@electron/remote": "^2.1.2",
+    "electron-log": "^5.2.0",
+    "electron-updater": "6.6.5",
+    "mqtt": "^5.10.1"
+  }
+
+app.asar -> build.env (verbatim):
+
+VERSION=2.261019.5
+APPNAME=GridTracker2
+App source files the guide relies on (src/renderer/lib, sizes in bytes):
+7422 /home/hatch/workspace/.batch-351-363/scratch-gridtracker/asar-src/src/renderer/lib/first.js
+25531 /home/hatch/workspace/.batch-351-363/scratch-gridtracker/asar-src/src/renderer/lib/settings/defaults.js
+60940 /home/hatch/workspace/.batch-351-363/scratch-gridtracker/asar-src/src/renderer/lib/wsjtx.js
+16181 /home/hatch/workspace/.batch-351-363/scratch-gridtracker/asar-src/src/renderer/lib/wsjtxUdp.js
+
+Bundled offline map tile sets inside the asar (src/renderer/map):
+4.9M	/home/hatch/workspace/.batch-351-363/scratch-gridtracker/asar-src/src/renderer/map/hamgames
+11M	/home/hatch/workspace/.batch-351-363/scratch-gridtracker/asar-src/src/renderer/map/sat
+8.6M	/home/hatch/workspace/.batch-351-363/scratch-gridtracker/asar-src/src/renderer/map/toner-background
+3174
+tile .png files in total
+
+First lines of CHANGELOG.md inside the asar:
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+
+## [v2.261019.4]
+
+### MD Markup Format
+**Kitchen Sink, Hail Mary, Pre-CABG Release**
+

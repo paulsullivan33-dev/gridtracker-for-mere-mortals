@@ -1,0 +1,10 @@
+Fictional example log for the GridTracker for Mere Mortals lab.
+Every station, name and grid in this file is invented for teaching.
+No real person's log is used or imitated.
+<adif_ver:5>3.1.4
+<programid:12>GT-LAB-DEMO
+<eoh>
+<call:5>N0CLL <gridsquare:4>FN31 <mode:3>FT8 <rst_sent:3>-07 <rst_rcvd:3>-09 <qso_date:8>20261107 <time_on:6>223900 <qso_date_off:8>20261107 <time_off:6>224000 <band:3>20m <freq:9>14.074000 <station_callsign:5>N0TST <my_gridsquare:4>FN42 <name:16>Fictional Friend <comment:19>lab fixture contact <eor>
+<call:5>N0DXA <gridsquare:4>EM79 <mode:3>FT8 <rst_sent:3>-12 <rst_rcvd:3>-05 <qso_date:8>20261107 <time_on:6>224500 <qso_date_off:8>20261107 <time_off:6>224600 <band:3>20m <freq:9>14.074000 <station_callsign:5>N0TST <my_gridsquare:4>FN42 <name:11>Demo Person <eor>
+<call:5>N0WST <gridsquare:4>DM04 <mode:3>FT8 <rst_sent:3>-03 <rst_rcvd:3>-11 <qso_date:8>20261107 <time_on:6>225200 <qso_date_off:8>20261107 <time_off:6>225300 <band:3>20m <freq:9>14.074000 <station_callsign:5>N0TST <my_gridsquare:4>FN42 <name:12>Sample Stand <eor>
+<call:5>N0CLL <gridsquare:4>FN31 <mode:3>FT8 <rst_sent:3>-08 <rst_rcvd:3>-08 <qso_date:8>20261106 <time_on:6>231500 <qso_date_off:8>20261106 <time_off:6>231600 <band:3>40m <freq:8>7.074000 <station_callsign:5>N0TST <my_gridsquare:4>FN42 <name:16>Fictional Friend <eor>

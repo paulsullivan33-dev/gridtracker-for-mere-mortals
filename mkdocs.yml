@@ -1,0 +1,30 @@
+site_name: GridTracker for Mere Mortals
+site_description: The live map and roster companion for WSJT-X. What it hears from your decoder and your log file, how it turns reports into pins, paths and award counts, and why everything it shows is only as true as what it was told.
+site_url: https://paulsullivan33-dev.github.io/gridtracker-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What GridTracker Is: what-gridtracker-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing GridTracker: installing-gridtracker.md
+  - The First Run: first-run.md
+  - The WSJT-X Link: the-wsjtx-link.md
+  - The Map: the-map.md
+  - The Call Roster: the-call-roster.md
+  - Your Logbook in GridTracker: your-logbook-in-gridtracker.md
+  - Logging Onward: logging-onward.md
+  - Lookups and Databases: lookups-and-databases.md
+  - Alerts: alerts.md
+  - Spots, Feeds and Offline Working: spots-feeds-and-offline.md
+  - Settings That Matter: settings-that-matter.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md
